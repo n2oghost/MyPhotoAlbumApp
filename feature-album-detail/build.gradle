@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
 
@@ -9,13 +9,11 @@ android {
     compileSdk androidSdkVersions.compileSdk
 
     defaultConfig {
-        applicationId "com.incentro.myphotoalbum"
         minSdk androidSdkVersions.minSdk
         targetSdk androidSdkVersions.targetSdk
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -38,17 +36,11 @@ android {
 
 dependencies {
 
-    api androidX.navigationFragmentKtx
-    api androidX.navigationUiKtx
-    api androidX.navigationDynamicFeaturesFragment
-
     implementation androidX.coreKtx
     implementation androidX.appCompat
     implementation google.material
     implementation androidX.constraintLayout
-
-    implementation project(path: ':feature-album-detail')
-    implementation project(path: ':feature-album-overview')
+    implementation androidX.navigationFragmentKtx
 
     testImplementation jUnit.jUnit
     androidTestImplementation androidX.testExtJUnit

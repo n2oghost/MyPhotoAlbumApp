@@ -1,19 +1,20 @@
-package com.incentro.myphotoalbum
+package com.incentro.feature_album_detail
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.incentro.myphotoalbum.databinding.FragmentFirstBinding
+import com.incentro.feature_album_detail.databinding.FragmentAlbumDetailsBinding
 
 /**
- * A simple [Fragment] subclass as the default destination in the navigation.
+ * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class AlbumDetailsFragment : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentAlbumDetailsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,9 +23,9 @@ class FirstFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = FragmentAlbumDetailsBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -32,8 +33,8 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        binding.buttonSecond.setOnClickListener {
+            findNavController().navigate(Uri.parse("incentro://album-overview/"))
         }
     }
 

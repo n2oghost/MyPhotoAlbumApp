@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/graph_album_overview"
+    app:startDestination="@id/AlbumOverviewFragment">
+
+    <fragment
+        android:id="@+id/AlbumOverviewFragment"
+        android:name="com.incentro.feature_album_overview.AlbumOverviewFragment"
+        android:label="@string/album_overview_fragment_label"
+        tools:layout="@layout/fragment_album_overview">
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="incentro://album-overview/" />
+    </fragment>
+
+</navigation>
