@@ -1,9 +1,11 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
-apply from: '../common.gradle'
+apply from: '../dependencies.gradle'
 
 android {
     compileSdk androidSdkVersions.compileSdk
@@ -44,8 +46,10 @@ dependencies {
 
     implementation androidX.coreKtx
     implementation androidX.appCompat
-    implementation google.material
     implementation androidX.constraintLayout
+    implementation google.material
+    implementation google.hiltAndroid
+    kapt google.hiltCompiler
 
     implementation project(path: ':feature-album-detail')
     implementation project(path: ':feature-album-overview')

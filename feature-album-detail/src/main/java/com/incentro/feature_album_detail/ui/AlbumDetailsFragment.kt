@@ -1,4 +1,4 @@
-package com.incentro.feature_album_detail
+package com.incentro.feature_album_detail.ui
 
 import android.net.Uri
 import android.os.Bundle
@@ -6,18 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.incentro.feature_album_detail.databinding.FragmentAlbumDetailsBinding
+import com.incentro.feature_album_detail.ui.AlbumDetailsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
+@AndroidEntryPoint
 class AlbumDetailsFragment : Fragment() {
 
+    private val viewModel: AlbumDetailsViewModel by viewModels()
     private var _binding: FragmentAlbumDetailsBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -34,7 +33,11 @@ class AlbumDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(Uri.parse("incentro://album-overview/"))
+            findNavController().navigate(
+                Uri.parse(
+                    getString(com.incentro.core.R.string.deeplink_album_overview)
+                )
+            )
         }
     }
 

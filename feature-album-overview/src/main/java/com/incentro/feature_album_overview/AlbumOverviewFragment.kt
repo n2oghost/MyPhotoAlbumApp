@@ -28,7 +28,11 @@ class AlbumOverviewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(Uri.parse("incentro://album-details/"))
+            findNavController().navigate(
+                Uri.parse(
+                    getString(com.incentro.core.R.string.deeplink_album_details)
+                )
+            )
         }
     }
 

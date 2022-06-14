@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_album_overview">
         <deepLink
             android:id="@+id/deepLink"
-            app:uri="incentro://album-overview/" />
+            app:uri="@string/deeplink_album_overview" />
     </fragment>
 
 </navigation>

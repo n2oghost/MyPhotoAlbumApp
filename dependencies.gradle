@@ -1,4 +1,5 @@
 def nav_version = "2.4.2"
+def hilt_version = "2.38.1"
 
 ext {
     androidX = [
@@ -13,11 +14,17 @@ ext {
     ]
 
     google = [
-            material : "com.google.android.material:material:1.6.1"
+            material : "com.google.android.material:material:1.6.1",
+            hiltAndroid : "com.google.dagger:hilt-android:$hilt_version",
+            hiltCompiler : "com.google.dagger:hilt-compiler:$hilt_version",
+    ]
+
+    square = [
+            retrofit : "com.squareup.retrofit2:retrofit:2.9.0",
     ]
 
     jUnit = [
-            jUnit : "junit:junit:4.13.2"
+            jUnit : "junit:junit:4.13.2",
     ]
 
     androidSdkVersions = [

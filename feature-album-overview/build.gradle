@@ -3,7 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
-apply from: '../common.gradle'
+apply from: '../dependencies.gradle'
 
 android {
     compileSdk androidSdkVersions.compileSdk
@@ -41,6 +41,8 @@ dependencies {
     implementation google.material
     implementation androidX.constraintLayout
     implementation androidX.navigationFragmentKtx
+    implementation project(path: ':core')
+
 
     testImplementation jUnit.jUnit
     androidTestImplementation androidX.testExtJUnit

@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/AlbumDetailsFragment"
-        android:name="com.incentro.feature_album_detail.AlbumDetailsFragment"
+        android:name="com.incentro.feature_album_detail.ui.AlbumDetailsFragment"
         android:label="@string/album_details_fragment_label"
         tools:layout="@layout/fragment_album_details">
         <deepLink
             android:id="@+id/deepLink"
-            app:uri="incentro://album-details/" />
+            app:uri="@string/deeplink_album_details" />
     </fragment>
 
 </navigation>

@@ -29,23 +29,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {
-
-    implementation androidX.coreKtx
-    implementation androidX.appCompat
-    implementation google.material
-    implementation androidX.constraintLayout
-    implementation androidX.navigationFragmentKtx
-    implementation project(path: ':core')
-
-
-    testImplementation jUnit.jUnit
-    androidTestImplementation androidX.testExtJUnit
-    androidTestImplementation androidX.testEspressoCore
-
+    api square.retrofit
+    api google.hiltAndroid
 }

@@ -16,3 +16,4 @@ rootProject.name = "My Photo Album"
 include ':app'
 include ':feature-album-overview'
 include ':feature-album-detail'
+include ':core'
