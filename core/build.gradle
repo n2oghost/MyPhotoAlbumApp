@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 apply from: '../dependencies.gradle'
@@ -33,5 +35,9 @@ android {
 
 dependencies {
     api square.retrofit
-    api google.hiltAndroid
+    api square.moshi
+    implementation square.retrofitMoshi
+    implementation google.hiltAndroid
+    kapt google.hiltCompiler
+    kapt square.moshiCodegen
 }

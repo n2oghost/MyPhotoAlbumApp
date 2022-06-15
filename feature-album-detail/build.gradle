@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 apply from: '../dependencies.gradle'
@@ -38,11 +40,14 @@ dependencies {
 
     implementation androidX.coreKtx
     implementation androidX.appCompat
-    implementation google.material
     implementation androidX.constraintLayout
     implementation androidX.navigationFragmentKtx
-    implementation project(path: ':core')
+    implementation google.material
+    implementation google.hiltAndroid
+    kapt google.hiltCompiler
+    kapt square.moshiCodegen
 
+    implementation project(path: ':core')
 
     testImplementation jUnit.jUnit
     androidTestImplementation androidX.testExtJUnit
