@@ -36,4 +36,6 @@ android {
 dependencies {
     api google.material
     api androidX.constraintLayout
+    api androidX.appCompat
+    api androidX.navigationFragmentKtx
 }

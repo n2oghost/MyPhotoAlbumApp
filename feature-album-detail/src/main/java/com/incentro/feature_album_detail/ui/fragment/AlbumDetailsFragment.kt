@@ -43,8 +43,16 @@ class AlbumDetailsFragment : Fragment() {
                     binding.albumDetailsProgressBar.visibility = View.GONE
                     Toast.makeText(activity, it.errorMessage, Toast.LENGTH_LONG).show()
                 }
+                is AlbumDetailsUiState.Empty -> {
+                    binding.albumDetailsProgressBar.visibility = View.GONE
+                    Toast.makeText(activity, MESSAGE_EMPTY, Toast.LENGTH_LONG).show()
+                }
                 else -> {}
             }
         }
+    }
+
+    companion object {
+        private const val MESSAGE_EMPTY = "No photos found."
     }
 }

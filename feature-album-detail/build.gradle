@@ -41,11 +41,6 @@ android {
 
 dependencies {
 
-    implementation androidX.coreKtx
-    implementation androidX.appCompat
-    implementation androidX.constraintLayout
-    implementation androidX.navigationFragmentKtx
-    implementation google.material
     implementation google.hiltAndroid
     kapt google.hiltCompiler
     kapt square.moshiCodegen
