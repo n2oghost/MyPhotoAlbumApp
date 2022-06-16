@@ -19,7 +19,7 @@ class AlbumDetailsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     getAlbumDetailsUseCase: GetAlbumDetailsUseCase,
     photoDataToUiMapper: PhotoDataToUiMapper,
-    dispatcher: CoroutineDispatcher = Dispatchers.IO
+    dispatcher: CoroutineDispatcher
 ) : ViewModel() {
     private val albumId: Int = savedStateHandle["id"] ?:
     throw IllegalArgumentException("Missing album ID")

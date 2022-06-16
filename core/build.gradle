@@ -37,6 +37,7 @@ dependencies {
     api square.retrofit
     api square.moshi
     implementation square.retrofitMoshi
+    implementation square.picasso
     implementation google.hiltAndroid
     kapt google.hiltCompiler
     kapt square.moshiCodegen

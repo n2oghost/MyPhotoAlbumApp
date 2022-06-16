@@ -1,4 +1,4 @@
-package com.incentro.core
+package com.incentro.core.network
 
 import dagger.Module
 import dagger.Provides
