@@ -21,7 +21,7 @@
         android:padding="12dp"
         android:textSize="16sp"
         android:elevation="2dp"
-        android:textColor="#FFF"
+        android:textColor="@color/white"
         tools:text="Bananen zijn lekker"
         app:layout_constraintBottom_toBottomOf="@id/album_details_photo_image"/>
 
