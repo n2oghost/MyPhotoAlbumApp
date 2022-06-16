@@ -1,5 +1,7 @@
 def nav_version = "2.4.2"
-def hilt_version = "2.38.1"
+def hilt_version = "2.42"
+def retrofit_version = "2.9.0"
+def moshi_version = "1.13.0"
 
 ext {
     androidX = [
@@ -20,7 +22,11 @@ ext {
     ]
 
     square = [
-            retrofit : "com.squareup.retrofit2:retrofit:2.9.0",
+            retrofit : "com.squareup.retrofit2:retrofit:$retrofit_version",
+            retrofitMoshi : "com.squareup.retrofit2:converter-moshi:$retrofit_version",
+            moshiCodegen : "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version",
+            moshi : "com.squareup.moshi:moshi:$moshi_version",
+            picasso : "com.squareup.picasso:picasso:2.8"
     ]
 
     jUnit = [
