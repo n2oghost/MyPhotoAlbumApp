@@ -10,15 +10,14 @@
         android:id="@+id/album_details_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:listitem="@layout/item_album_details_photo"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ProgressBar
+    <include layout="@layout/view_progress_bar"
         android:id="@+id/album_details_progress_bar"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:visibility="gone"
-        tools:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

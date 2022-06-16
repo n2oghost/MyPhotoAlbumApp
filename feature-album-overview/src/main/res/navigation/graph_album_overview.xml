@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/AlbumOverviewFragment"
-        android:name="com.incentro.feature_album_overview.AlbumOverviewFragment"
+        android:name="com.incentro.feature_album_overview.ui.fragment.AlbumOverviewFragment"
         android:label="@string/album_overview_fragment_label"
         tools:layout="@layout/fragment_album_overview">
         <deepLink

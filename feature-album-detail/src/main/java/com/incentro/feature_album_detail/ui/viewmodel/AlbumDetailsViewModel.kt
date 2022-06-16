@@ -10,7 +10,6 @@ import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiState
 import com.incentro.feature_album_detail.ui.model.mapper.PhotoDataToUiMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
