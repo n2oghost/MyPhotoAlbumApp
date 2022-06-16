@@ -49,11 +49,10 @@ dependencies {
 
     implementation androidX.coreKtx
     implementation androidX.appCompat
-    implementation androidX.constraintLayout
-    implementation google.material
     implementation google.hiltAndroid
     kapt google.hiltCompiler
 
+    implementation project(path: ':core-ui')
     implementation project(path: ':feature-album-detail')
     implementation project(path: ':feature-album-overview')
 

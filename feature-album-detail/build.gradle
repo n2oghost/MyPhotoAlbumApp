@@ -24,13 +24,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
     buildFeatures {
         viewBinding true
     }
@@ -48,6 +51,7 @@ dependencies {
     kapt square.moshiCodegen
 
     implementation project(path: ':core')
+    implementation project(path: ':core-ui')
 
     testImplementation jUnit.jUnit
     androidTestImplementation androidX.testExtJUnit
