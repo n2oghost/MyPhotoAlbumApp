@@ -6,11 +6,11 @@ plugins {
 apply from: '../dependencies.gradle'
 
 android {
-    compileSdk androidSdkVersions.compileSdk
+    compileSdk versions.compileSdk
 
     defaultConfig {
-        minSdk androidSdkVersions.minSdk
-        targetSdk androidSdkVersions.targetSdk
+        minSdk versions.minSdk
+        targetSdk versions.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -34,8 +34,10 @@ android {
 }
 
 dependencies {
-    api google.material
-    api androidX.constraintLayout
-    api androidX.appCompat
-    api androidX.navigationFragmentKtx
+    api androidX.composeHiltNavigation
+    api androidX.composeMaterial
+    api androidX.composeUiTooling
+    api androidX.composeLifecycleViewModel
+    api androidX.composeNavigation
+    api androidX.composeLiveData
 }

@@ -8,12 +8,12 @@ plugins {
 apply from: '../dependencies.gradle'
 
 android {
-    compileSdk androidSdkVersions.compileSdk
+    compileSdk versions.compileSdk
 
     defaultConfig {
         applicationId "com.incentro.myphotoalbum"
-        minSdk androidSdkVersions.minSdk
-        targetSdk androidSdkVersions.targetSdk
+        minSdk versions.minSdk
+        targetSdk versions.targetSdk
         versionCode 1
         versionName "1.0"
 
@@ -37,16 +37,25 @@ android {
     }
 
     buildFeatures {
-        viewBinding true
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion versions.kotlinCompilerExtension
     }
 }
 
 dependencies {
 
-    api androidX.navigationFragmentKtx
-    api androidX.navigationUiKtx
-    api androidX.navigationDynamicFeaturesFragment
-
+    implementation androidX.navigationFragmentKtx
+    implementation androidX.navigationUiKtx
+    implementation androidX.navigationDynamicFeaturesFragment
+    implementation androidX.composeActivity
+    implementation androidX.composeHiltNavigation
+    implementation androidX.composeMaterial
+    implementation androidX.composeUiTooling
+    implementation androidX.composeNavigation
+    implementation androidX.composeLiveData
     implementation androidX.coreKtx
     implementation androidX.appCompat
     implementation google.hiltAndroid

@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string translatable="false" name="deeplink_album_overview">incentro://album-overview/</string>
-    <string translatable="false" name="deeplink_album_details">incentro://album-details/{id}</string>
-</resources>
