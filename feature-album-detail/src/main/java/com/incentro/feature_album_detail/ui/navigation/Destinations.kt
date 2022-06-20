@@ -6,7 +6,7 @@ sealed class Destinations {
     object AlbumDetails : Destination(
         route = "album-details/{id}"
     ) {
-        fun withId(id: Int) : String {
+        fun withArguments(id: Int) : String {
             return "album-details/$id"
         }
     }

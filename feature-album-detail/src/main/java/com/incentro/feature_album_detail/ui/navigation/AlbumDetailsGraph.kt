@@ -14,9 +14,12 @@ fun NavGraphBuilder.albumDetailsGraph() {
     navigation(
         startDestination = Destinations.AlbumDetails.route,
         route = GlobalDestinations.FeatureAlbumDetails.route,
-//        arguments = listOf(
-//            GlobalDestinations.FeatureAlbumDetails.
-//        )
+        arguments = listOf(
+            navArgument(name = "id") {
+                type = NavType.IntType
+                defaultValue = -1
+            }
+        )
     ) {
         composable(
             route = Destinations.AlbumDetails.route,

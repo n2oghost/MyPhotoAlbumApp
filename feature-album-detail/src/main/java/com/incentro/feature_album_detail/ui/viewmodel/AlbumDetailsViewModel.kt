@@ -20,7 +20,7 @@ class AlbumDetailsViewModel @Inject constructor(
     photoDataToUiMapper: PhotoDataToUiMapper,
     dispatcher: CoroutineDispatcher
 ) : ViewModel() {
-    private val albumId: Int = savedStateHandle["id"] ?:
+    private val albumId: Int = savedStateHandle.get<Int>("id") ?:
     throw IllegalArgumentException("Missing album ID")
 
     private val _viewStateLiveData = MutableLiveData<AlbumDetailsUiState>()

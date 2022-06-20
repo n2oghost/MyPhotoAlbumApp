@@ -1,7 +1,8 @@
 package com.incentro.myphotoalbum.ui.composable
 
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material3.MediumTopAppBar
+import androidx.compose.material3.SmallTopAppBar
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import com.incentro.myphotoalbum.ui.navigation.NavGraph
@@ -11,7 +12,7 @@ import com.incentro.myphotoalbum.R
 @Composable
 fun AppContent() {
     ComposeAppTheme {
-        TopAppBar(
+        SmallTopAppBar(
             title = {
                 Text(
                     text = stringResource(id = R.string.app_name)

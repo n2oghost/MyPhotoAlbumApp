@@ -7,7 +7,7 @@ sealed class GlobalDestinations {
     object FeatureAlbumDetails : Destination(
         route = "feature-album-details/{id}"
     ) {
-        fun withId(id: Int) : String {
+        fun withArguments(id: Int) : String {
             return "feature-album-details/$id"
         }
     }

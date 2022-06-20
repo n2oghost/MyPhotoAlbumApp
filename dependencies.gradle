@@ -12,12 +12,8 @@ ext {
     ]
 
     androidX = [
-            navigationFragmentKtx : "androidx.navigation:navigation-fragment-ktx:$nav_version",
-            navigationUiKtx : "androidx.navigation:navigation-ui-ktx:$nav_version",
-            navigationDynamicFeaturesFragment : "androidx.navigation:navigation-dynamic-features-fragment:$nav_version",
             composeNavigation : "androidx.navigation:navigation-compose:$nav_version",
             composeActivity : "androidx.activity:activity-compose:1.4.0",
-            composeMaterial : "androidx.compose.material:material:$versions.composeVersion",
             composeMaterial3 : "androidx.compose.material3:material3:1.0.0-alpha13",
             composeUiTooling : "androidx.compose.ui:ui-tooling:$versions.composeVersion",
             composeLiveData : "androidx.compose.runtime:runtime-livedata:$versions.composeVersion",
@@ -38,7 +34,6 @@ ext {
             retrofitMoshi : "com.squareup.retrofit2:converter-moshi:$retrofit_version",
             moshiCodegen : "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version",
             moshi : "com.squareup.moshi:moshi:$moshi_version",
-            picasso : "com.squareup.picasso:picasso:2.8"
     ]
 
     jetBrains = [
@@ -47,5 +42,9 @@ ext {
 
     jUnit = [
             jUnit : "junit:junit:4.13.2",
+    ]
+
+    other = [
+            coil : "io.coil-kt:coil-compose:2.1.0",
     ]
 }
