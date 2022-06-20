@@ -18,9 +18,9 @@
         android:theme="@style/Theme.MyPhotoAlbum"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.MyPhotoAlbum.NoActionBar">
+            android:theme="@style/Theme.MyPhotoAlbum">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

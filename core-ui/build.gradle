@@ -31,11 +31,20 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion versions.composeVersion
+    }
 }
 
 dependencies {
     api androidX.composeHiltNavigation
     api androidX.composeMaterial
+    api androidX.composeMaterial3
     api androidX.composeUiTooling
     api androidX.composeLifecycleViewModel
     api androidX.composeNavigation

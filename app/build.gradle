@@ -41,23 +41,13 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion versions.kotlinCompilerExtension
+        kotlinCompilerExtensionVersion versions.composeVersion
     }
 }
 
 dependencies {
 
-    implementation androidX.navigationFragmentKtx
-    implementation androidX.navigationUiKtx
-    implementation androidX.navigationDynamicFeaturesFragment
-    implementation androidX.composeActivity
-    implementation androidX.composeHiltNavigation
-    implementation androidX.composeMaterial
-    implementation androidX.composeUiTooling
-    implementation androidX.composeNavigation
-    implementation androidX.composeLiveData
     implementation androidX.coreKtx
-    implementation androidX.appCompat
     implementation google.hiltAndroid
     kapt google.hiltCompiler
 

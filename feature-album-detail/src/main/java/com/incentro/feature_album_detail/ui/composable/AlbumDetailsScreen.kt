@@ -1,4 +1,4 @@
-package com.incentro.myphotoalbum
+package com.incentro.feature_album_detail.ui.composable
 
 import androidx.compose.runtime.Composable
 import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiState

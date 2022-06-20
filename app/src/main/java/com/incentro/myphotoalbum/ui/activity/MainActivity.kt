@@ -1,8 +1,9 @@
-package com.incentro.myphotoalbum
+package com.incentro.myphotoalbum.ui.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import com.incentro.myphotoalbum.ui.composable.AppContent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -12,7 +13,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            SetupNavGraph()
+            AppContent()
         }
     }
 }
