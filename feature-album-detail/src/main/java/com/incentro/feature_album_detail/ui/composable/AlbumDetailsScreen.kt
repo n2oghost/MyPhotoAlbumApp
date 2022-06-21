@@ -11,8 +11,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import com.incentro.core_ui.composable.LoadingScreen
-import com.incentro.core_ui.composable.TopAppBar
-import com.incentro.feature_album_detail.R
 import com.incentro.feature_album_detail.ui.model.PhotoUiModel
 import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiState
 import com.incentro.feature_album_detail.ui.viewmodel.AlbumDetailsViewModel
@@ -32,7 +30,6 @@ fun AlbumDetailsScreen(
     }
 
     Column {
-        TopAppBar(titleResource = R.string.album_details_title)
         LoadingScreen(isLoading = isLoading) {
             LazyColumn {
                 items(photos.size) { index ->

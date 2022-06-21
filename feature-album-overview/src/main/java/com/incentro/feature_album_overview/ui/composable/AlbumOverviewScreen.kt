@@ -12,8 +12,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import com.incentro.core_ui.composable.LoadingScreen
-import com.incentro.core_ui.composable.TopAppBar
-import com.incentro.feature_album_overview.R
 import com.incentro.feature_album_overview.ui.model.AlbumUiModel
 import com.incentro.feature_album_overview.ui.state.AlbumOverviewUiState
 import com.incentro.feature_album_overview.ui.viewmodel.AlbumOverviewViewModel
@@ -34,7 +32,6 @@ fun AlbumOverviewScreen(
     }
 
     Column {
-        TopAppBar(titleResource = R.string.album_overview_title)
         LoadingScreen(isLoading = isLoading) {
             LazyColumn {
                 items(albums.size) { index ->
