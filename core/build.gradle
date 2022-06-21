@@ -5,14 +5,12 @@ plugins {
     id 'dagger.hilt.android.plugin'
 }
 
-apply from: '../dependencies.gradle'
-
 android {
-    compileSdk androidSdkVersions.compileSdk
+    compileSdk versions.compileSdk
 
     defaultConfig {
-        minSdk androidSdkVersions.minSdk
-        targetSdk androidSdkVersions.targetSdk
+        minSdk versions.minSdk
+        targetSdk versions.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -40,7 +38,6 @@ dependencies {
     api square.retrofit
     api square.moshi
     implementation square.retrofitMoshi
-    implementation square.picasso
     implementation jetBrains.coroutines
     implementation google.hiltAndroid
     kapt google.hiltCompiler

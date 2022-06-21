@@ -3,14 +3,12 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
-apply from: '../dependencies.gradle'
-
 android {
-    compileSdk androidSdkVersions.compileSdk
+    compileSdk versions.compileSdk
 
     defaultConfig {
-        minSdk androidSdkVersions.minSdk
-        targetSdk androidSdkVersions.targetSdk
+        minSdk versions.minSdk
+        targetSdk versions.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -31,11 +29,22 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion versions.composeVersion
+    }
 }
 
 dependencies {
-    api google.material
-    api androidX.constraintLayout
-    api androidX.appCompat
-    api androidX.navigationFragmentKtx
+    api androidX.composeNavigation
+    api androidX.composeHiltNavigation
+    api androidX.composeMaterial
+    api androidX.composeUiTooling
+    api androidX.composeLifecycleViewModel
+    api androidX.composeLiveData
+    api other.coil
 }
