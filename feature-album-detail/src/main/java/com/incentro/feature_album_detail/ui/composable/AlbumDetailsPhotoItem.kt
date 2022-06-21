@@ -2,6 +2,7 @@ package com.incentro.feature_album_detail.ui.composable
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
@@ -9,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.incentro.feature_album_detail.ui.model.PhotoUiModel
@@ -19,7 +21,8 @@ fun AlbumDetailsPhotoItem(item: PhotoUiModel) {
         AsyncImage(
             model = item.url,
             contentDescription = null,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.height(400.dp),
+            contentScale = ContentScale.FillWidth
         )
         Text(
             text = item.title,

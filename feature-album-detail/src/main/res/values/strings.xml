@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="album_details_fragment_label">Album Details Fragment</string>
+    <string name="album_details_title">Album Details</string>
 </resources>
