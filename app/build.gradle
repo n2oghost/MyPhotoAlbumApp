@@ -45,16 +45,12 @@ android {
 
 dependencies {
 
-    implementation androidX.coreKtx
-    implementation google.hiltAndroid
-    kapt google.hiltCompiler
+    implementation libraries.hiltAndroid
+    kapt libraries.hiltCompiler
 
+    implementation project(path: ':core')
     implementation project(path: ':core-ui')
     implementation project(path: ':feature-album-detail')
     implementation project(path: ':feature-album-overview')
-
-    testImplementation jUnit.jUnit
-    androidTestImplementation androidX.testExtJUnit
-    androidTestImplementation androidX.testEspressoCore
 
 }

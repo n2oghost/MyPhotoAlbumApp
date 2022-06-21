@@ -40,11 +40,13 @@ android {
 }
 
 dependencies {
-    api androidX.composeNavigation
-    api androidX.composeHiltNavigation
-    api androidX.composeMaterial
-    api androidX.composeUiTooling
-    api androidX.composeLifecycleViewModel
-    api androidX.composeLiveData
-    api other.coil
+
+    api libraries.composeNavigation
+    api libraries.composeHiltNavigation
+    api libraries.composeMaterial
+    api libraries.composeUiTooling
+    api libraries.composeLifecycleViewModel
+    api libraries.composeLiveData
+    api libraries.coil
+
 }
