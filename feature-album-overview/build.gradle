@@ -5,8 +5,6 @@ plugins {
     id 'dagger.hilt.android.plugin'
 }
 
-apply from: '../dependencies.gradle'
-
 android {
     compileSdk versions.compileSdk
 
