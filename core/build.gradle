@@ -46,9 +46,4 @@ dependencies {
     kapt libraries.hiltCompiler
     kapt libraries.moshiCodegen
 
-    testApi testLibraries.mockK
-    testApi testLibraries.jUnit
-
-    androidTestApi testLibraries.extJUnit
-
 }
