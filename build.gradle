@@ -2,6 +2,7 @@ buildscript {
     def hilt_version = "2.42"
     def retrofit_version = "2.9.0"
     def moshi_version = "1.13.0"
+    def coroutines_version = "1.3.9"
 
     ext {
         versions = [
@@ -21,7 +22,7 @@ buildscript {
                 composeNavigation : "androidx.navigation:navigation-compose:2.4.2",
                 composeUiTooling : "androidx.compose.ui:ui-tooling:$versions.composeVersion",
                 coreKtx : "androidx.core:core-ktx:1.8.0",
-                coroutines : "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9",
+                coroutines : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version",
                 hiltAndroid : "com.google.dagger:hilt-android:$hilt_version",
                 hiltCompiler : "com.google.dagger:hilt-compiler:$hilt_version",
                 moshi : "com.squareup.moshi:moshi:$moshi_version",
@@ -32,6 +33,7 @@ buildscript {
 
         testLibraries = [
                 extJUnit : "androidx.test.ext:junit:1.1.3",
+                coroutines : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version",
                 jUnit : "junit:junit:4.13.2",
                 mockK : "io.mockk:mockk:1.12.4",
         ]
