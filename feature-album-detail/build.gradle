@@ -43,15 +43,15 @@ android {
 
 dependencies {
 
-    implementation google.hiltAndroid
-    kapt google.hiltCompiler
-    kapt square.moshiCodegen
+    implementation libraries.hiltAndroid
+    kapt libraries.hiltCompiler
+    kapt libraries.moshiCodegen
 
     implementation project(path: ':core')
     implementation project(path: ':core-ui')
 
-    testImplementation jUnit.jUnit
-    androidTestImplementation androidX.testExtJUnit
-    androidTestImplementation androidX.testEspressoCore
+    testImplementation testLibraries.coroutines
+    testImplementation testLibraries.jUnit
+    testImplementation testLibraries.mockK
 
 }

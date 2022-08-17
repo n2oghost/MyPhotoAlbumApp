@@ -34,12 +34,16 @@ android {
 }
 
 dependencies {
-    api androidX.coreKtx
-    api square.retrofit
-    api square.moshi
-    implementation square.retrofitMoshi
-    implementation jetBrains.coroutines
-    implementation google.hiltAndroid
-    kapt google.hiltCompiler
-    kapt square.moshiCodegen
+
+    api libraries.coreKtx
+    api libraries.retrofit
+    api libraries.moshi
+
+    implementation libraries.retrofitMoshi
+    implementation libraries.coroutines
+    implementation libraries.hiltAndroid
+
+    kapt libraries.hiltCompiler
+    kapt libraries.moshiCodegen
+
 }
