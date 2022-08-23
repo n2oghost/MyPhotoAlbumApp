@@ -12,7 +12,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import com.incentro.core_ui.composable.LoadingScreen
-import com.incentro.feature_album_overview.ui.model.AlbumUiModel
+import com.incentro.feature_album_overview.data.model.Album
 import com.incentro.feature_album_overview.ui.state.AlbumOverviewUiState
 import com.incentro.feature_album_overview.ui.viewmodel.AlbumOverviewViewModel
 
@@ -25,7 +25,7 @@ fun AlbumOverviewScreen(
 ) {
     val viewState = viewModel.viewStateLiveData.observeAsState()
     var albums by remember {
-        mutableStateOf<List<AlbumUiModel>>(listOf())
+        mutableStateOf<List<Album>>(listOf())
     }
     var isLoading by remember {
         mutableStateOf(false)

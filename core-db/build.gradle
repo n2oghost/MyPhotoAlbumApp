@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -29,24 +30,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
-    buildFeatures {
-        compose true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion versions.composeCompiler
-    }
 }
 
 dependencies {
 
-    api libraries.composeNavigation
-    api libraries.composeHiltNavigation
-    api libraries.composeMaterial
-    api libraries.composeUiTooling
-    api libraries.composeLifecycleViewModel
-    api libraries.composeLiveData
-    api libraries.coil
+    implementation libraries.roomRuntime
+    api libraries.roomKtx
+    kapt libraries.roomCompiler
 
 }

@@ -12,10 +12,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.incentro.core_ui.navigation.GlobalDestinations
-import com.incentro.feature_album_overview.ui.model.AlbumUiModel
+import com.incentro.feature_album_overview.data.model.Album
 
 @Composable
-fun AlbumOverviewItem(item: AlbumUiModel, navController: NavController) {
+fun AlbumOverviewItem(item: Album, navController: NavController) {
     Surface(
         modifier = Modifier.clickable {
             navController.navigate(
