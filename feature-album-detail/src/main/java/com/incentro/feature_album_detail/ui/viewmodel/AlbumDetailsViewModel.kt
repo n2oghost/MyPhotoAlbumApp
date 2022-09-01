@@ -7,17 +7,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.incentro.feature_album_detail.domain.GetAlbumDetailsUseCase
 import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiState
-import com.incentro.feature_album_detail.ui.model.mapper.PhotoDataToUiMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
 class AlbumDetailsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     getAlbumDetailsUseCase: GetAlbumDetailsUseCase,
-    photoDataToUiMapper: PhotoDataToUiMapper,
     dispatcher: CoroutineDispatcher
 ) : ViewModel() {
     private val albumId: Int = savedStateHandle.get<Int>("id") ?:
@@ -30,14 +28,14 @@ class AlbumDetailsViewModel @Inject constructor(
         _viewStateLiveData.value = AlbumDetailsUiState.Loading
         viewModelScope.launch(dispatcher) {
             try {
-                val albumDetails = getAlbumDetailsUseCase(albumId)
-                    .map(photoDataToUiMapper::map)
-                _viewStateLiveData.postValue(
-                    if (albumDetails.isEmpty())
-                        AlbumDetailsUiState.Empty
-                    else
-                        AlbumDetailsUiState.Success(albumDetails)
-                )
+                getAlbumDetailsUseCase(albumId).collect { album ->
+                    _viewStateLiveData.postValue(
+                        if (album.isEmpty())
+                            AlbumDetailsUiState.Empty
+                        else
+                            AlbumDetailsUiState.Success(album)
+                    )
+                }
             } catch (error: Exception) {
                 _viewStateLiveData.postValue(
                     AlbumDetailsUiState.Error(error.message)

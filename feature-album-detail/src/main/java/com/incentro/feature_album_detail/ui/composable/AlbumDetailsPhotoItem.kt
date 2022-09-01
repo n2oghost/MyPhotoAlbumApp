@@ -12,10 +12,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.incentro.feature_album_detail.ui.model.PhotoUiModel
+import com.incentro.feature_album_detail.data.model.Photo
 
 @Composable
-fun AlbumDetailsPhotoItem(item: PhotoUiModel) {
+fun AlbumDetailsPhotoItem(item: Photo) {
     Box {
         AsyncImage(
             model = item.url,

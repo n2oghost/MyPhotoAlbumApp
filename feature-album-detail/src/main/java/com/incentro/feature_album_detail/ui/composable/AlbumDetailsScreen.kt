@@ -9,9 +9,10 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import com.incentro.core_ui.composable.LoadingScreen
-import com.incentro.feature_album_detail.ui.model.PhotoUiModel
+import com.incentro.feature_album_detail.data.model.Photo
 import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiState
 import com.incentro.feature_album_detail.ui.viewmodel.AlbumDetailsViewModel
 
@@ -19,17 +20,18 @@ const val EMPTY_LIST_MESSAGE = "No photos found."
 
 @Composable
 fun AlbumDetailsScreen(
-    viewModel: AlbumDetailsViewModel
+    viewModel: AlbumDetailsViewModel,
+    modifier: Modifier = Modifier
 ) {
     val viewState = viewModel.viewStateLiveData.observeAsState()
     var photos by remember {
-        mutableStateOf<List<PhotoUiModel>>(listOf())
+        mutableStateOf<List<Photo>>(listOf())
     }
     var isLoading by remember {
         mutableStateOf(false)
     }
 
-    Column {
+    Column(modifier = modifier) {
         LoadingScreen(isLoading = isLoading) {
             LazyColumn {
                 items(photos.size) { index ->
