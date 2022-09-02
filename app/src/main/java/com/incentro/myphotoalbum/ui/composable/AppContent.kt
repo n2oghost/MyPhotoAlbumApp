@@ -1,9 +1,11 @@
 package com.incentro.myphotoalbum.ui.composable
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.incentro.core_ui.theme.ComposeAppTheme
 import com.incentro.myphotoalbum.R
@@ -21,9 +23,9 @@ fun AppContent() {
                         )
                     }
                 )
-            }
+            },
         ) { padding ->
-            NavGraph(padding)
+            NavGraph(Modifier.padding(padding))
         }
     }
 }

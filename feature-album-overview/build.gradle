@@ -1,8 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -37,7 +37,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion versions.composeVersion
+        kotlinCompilerExtensionVersion versions.composeCompiler
     }
 }
 
@@ -49,6 +49,7 @@ dependencies {
 
     implementation project(path: ':core')
     implementation project(path: ':core-ui')
+    implementation project(path: ':core-db')
 
     testImplementation testLibraries.coroutines
     testImplementation testLibraries.jUnit

@@ -1,9 +1,9 @@
-package com.incentro.feature_album_detail.data.model
+package com.incentro.feature_album_detail.data.model.network
 
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class PhotoDataModel(
+data class PhotoNetworkModel(
     val albumId: Int,
     val id: Int,
     val title: String,

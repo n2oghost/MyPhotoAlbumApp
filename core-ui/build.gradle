@@ -35,7 +35,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion versions.composeVersion
+        kotlinCompilerExtensionVersion versions.composeCompiler
     }
 }
 
@@ -45,6 +45,7 @@ dependencies {
     api libraries.composeHiltNavigation
     api libraries.composeMaterial
     api libraries.composeUiTooling
+    api libraries.composeLifecycleRuntime
     api libraries.composeLifecycleViewModel
     api libraries.composeLiveData
     api libraries.coil

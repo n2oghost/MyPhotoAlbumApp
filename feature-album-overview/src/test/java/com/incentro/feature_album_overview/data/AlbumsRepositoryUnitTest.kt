@@ -1,6 +1,6 @@
 package com.incentro.feature_album_overview.data
 
-import com.incentro.feature_album_overview.data.model.AlbumDataModel
+import com.incentro.feature_album_overview.data.model.network.AlbumNetworkModel
 import com.incentro.feature_album_overview.data.repository.AlbumsRepository
 import com.incentro.feature_album_overview.data.service.AlbumsService
 import io.mockk.coEvery
@@ -29,13 +29,13 @@ class AlbumsRepositoryUnitTest {
         assertEquals(expected, result)
     }
 
-    private fun getAlbumsMock() : List<AlbumDataModel> = listOf(
-        AlbumDataModel(
+    private fun getAlbumsMock() : List<AlbumNetworkModel> = listOf(
+        AlbumNetworkModel(
             userId = 1,
             id = 1,
             title = "hurp"
         ),
-        AlbumDataModel(
+        AlbumNetworkModel(
             userId = 2,
             id = 2,
             title = "derp"
