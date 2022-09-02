@@ -29,7 +29,8 @@ fun NavGraphBuilder.albumOverviewGraph(
             val viewModel = hiltViewModel<AlbumOverviewViewModel>()
             val viewState: AlbumOverviewUiState by viewModel.viewState.collectAsStateWithLifecycle()
             AlbumOverviewScreen(
-                viewState,
+                viewState.albums,
+                viewState.loadingState,
                 navController,
                 modifier
             )

@@ -10,7 +10,6 @@ class GetLocalAlbumsUseCase @Inject constructor(
     private val albumsRepository: AlbumsRepository
 ) {
     suspend operator fun invoke() : Flow<List<Album>> {
-        Log.e("HURP", ": use case")
         return albumsRepository.albums
     }
 }

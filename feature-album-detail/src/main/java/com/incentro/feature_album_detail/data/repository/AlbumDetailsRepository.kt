@@ -8,7 +8,6 @@ import com.incentro.feature_album_detail.data.service.AlbumDetailsService
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
@@ -17,12 +16,13 @@ class AlbumDetailsRepository @Inject constructor(
     private val albumDao: AlbumDao
 ) {
 
-    var album: Flow<List<Photo>> = flow {}
-
-    suspend fun fetchAlbumById(id: Int) {
-        album = albumDao.getPhotos(id).map {
+    suspend fun getLocalAlbumById(id: Int): Flow<List<Photo>> {
+        return albumDao.getPhotos(id).map {
             it.map { albumDbModel -> albumDbModel.asPhoto() }
         }
+    }
+
+    suspend fun fetchLatestAlbumById(id: Int) {
         withContext(Dispatchers.IO) {
             val album = albumDetailsService.getAlbumById(id)
             albumDao.insertAllPhotos(album.map { it.asDatabaseModel() })

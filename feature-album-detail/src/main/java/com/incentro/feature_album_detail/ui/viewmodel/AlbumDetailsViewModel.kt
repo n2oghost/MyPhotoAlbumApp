@@ -1,45 +1,51 @@
 package com.incentro.feature_album_detail.ui.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.incentro.feature_album_detail.domain.GetAlbumDetailsUseCase
+import com.incentro.feature_album_detail.domain.GetLocalAlbumDetailsUseCase
+import com.incentro.feature_album_detail.domain.LoadLatestAlbumDetailsUseCase
+import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiLoadingState
 import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 @HiltViewModel
 class AlbumDetailsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    getAlbumDetailsUseCase: GetAlbumDetailsUseCase,
+    getLocalAlbumDetailsUseCase: GetLocalAlbumDetailsUseCase,
+    loadLatestAlbumDetailsUseCase: LoadLatestAlbumDetailsUseCase,
     dispatcher: CoroutineDispatcher
 ) : ViewModel() {
     private val albumId: Int = savedStateHandle.get<Int>("id") ?:
     throw IllegalArgumentException("Missing album ID")
 
-    private val _viewStateLiveData = MutableLiveData<AlbumDetailsUiState>()
-    val viewStateLiveData: LiveData<AlbumDetailsUiState> = _viewStateLiveData
+    private val _viewState = MutableStateFlow(AlbumDetailsUiState())
+    val viewState = _viewState.asStateFlow()
 
     init {
-        _viewStateLiveData.value = AlbumDetailsUiState.Loading
+        viewModelScope.launch(dispatcher) {
+            getLocalAlbumDetailsUseCase(albumId).collect { album ->
+                _viewState.update {
+                    it.copy(photos = album)
+                }
+            }
+        }
         viewModelScope.launch(dispatcher) {
             try {
-                getAlbumDetailsUseCase(albumId).collect { album ->
-                    _viewStateLiveData.postValue(
-                        if (album.isEmpty())
-                            AlbumDetailsUiState.Empty
-                        else
-                            AlbumDetailsUiState.Success(album)
-                    )
+                loadLatestAlbumDetailsUseCase(albumId)
+                _viewState.update {
+                    it.copy(loadingState = AlbumDetailsUiLoadingState.Success)
                 }
             } catch (error: Exception) {
-                _viewStateLiveData.postValue(
-                    AlbumDetailsUiState.Error(error.message)
-                )
+                _viewState.update {
+                    it.copy(loadingState = AlbumDetailsUiLoadingState.Error(error.message))
+                }
             }
         }
     }

@@ -2,9 +2,13 @@ package com.incentro.feature_album_detail.ui.state
 
 import com.incentro.feature_album_detail.data.model.Photo
 
-sealed class AlbumDetailsUiState {
-    object Loading : AlbumDetailsUiState()
-    data class Success(val photos: List<Photo>) : AlbumDetailsUiState()
-    object Empty : AlbumDetailsUiState()
-    data class Error(val errorMessage: String?) : AlbumDetailsUiState()
+data class AlbumDetailsUiState(
+    val photos: List<Photo> = listOf(),
+    val loadingState: AlbumDetailsUiLoadingState = AlbumDetailsUiLoadingState.Loading
+)
+
+sealed class AlbumDetailsUiLoadingState {
+    object Loading : AlbumDetailsUiLoadingState()
+    object Success : AlbumDetailsUiLoadingState()
+    data class Error(val errorMessage: String?) : AlbumDetailsUiLoadingState()
 }
