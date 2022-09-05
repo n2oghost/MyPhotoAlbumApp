@@ -1,6 +1,7 @@
 package com.incentro.myphotoalbum.ui.composable
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -19,7 +20,8 @@ fun AppContent() {
                 TopAppBar(
                     title = {
                         Text(
-                            text = stringResource(id = R.string.app_name)
+                            text = stringResource(id = R.string.app_name),
+                            style = MaterialTheme.typography.h1
                         )
                     }
                 )
