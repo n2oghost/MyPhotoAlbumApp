@@ -9,26 +9,30 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
-import androidx.core.view.ViewCompat
-
-private val DarkColorScheme = darkColors(
-    primary = Purple80,
-    primaryVariant = Pink80,
-    secondary = PurpleGrey80,
-    onPrimary = Black,
-    onSecondary = White,
-)
+import androidx.core.view.WindowCompat
 
 private val LightColorScheme = lightColors(
     primary = Purple40,
     primaryVariant = Pink40,
     secondary = PurpleGrey40,
     background = OffWhite,
-    surface = OffWhite,
+    surface = White980,
     onPrimary = White,
     onSecondary = White,
     onBackground = OffBlack,
     onSurface = OffBlack,
+)
+
+private val DarkColorScheme = darkColors(
+    primary = Purple80,
+    primaryVariant = Pink80,
+    secondary = PurpleGrey80,
+    background = Grey900,
+    surface = White150,
+    onPrimary = Grey900,
+    onSecondary = Grey900,
+    onBackground = OffWhite,
+    onSurface = White980,
 )
 
 @Composable
@@ -37,17 +41,21 @@ fun ComposeAppTheme(
     content: @Composable () -> Unit
 ) {
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
+
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
-            (view.context as Activity).window.statusBarColor = colorScheme.primary.toArgb()
-            ViewCompat.getWindowInsetsController(view)?.isAppearanceLightStatusBars = darkTheme
+            (view.context as Activity).window.statusBarColor = colorScheme.secondary.toArgb()
+            WindowCompat
+                .getInsetsController((view.context as Activity).window, view)
+                .isAppearanceLightStatusBars = darkTheme
         }
     }
 
     MaterialTheme(
         colors = colorScheme,
-        typography = Typography,
-        content = content
+        typography = typography,
+        content = content,
+        shapes = shapes
     )
 }
