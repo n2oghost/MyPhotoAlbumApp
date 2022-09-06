@@ -8,11 +8,11 @@ fun AlbumNetworkModel.asDatabaseModel() : AlbumDatabaseModel = AlbumDatabaseMode
     id = id,
     title = title,
     userId = userId,
-    favorite = false
+    favorite = false // The mock service does not support favorites
 )
 
 fun AlbumDatabaseModel.asAlbum() : Album = Album(
     id = id,
     title = title,
-    favorite = false
+    favorite = favorite
 )
