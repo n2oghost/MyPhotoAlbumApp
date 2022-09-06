@@ -14,6 +14,8 @@ import com.incentro.core_ui.navigation.GlobalDestinations
 import com.incentro.feature_album_detail.ui.composable.AlbumDetailsScreen
 import com.incentro.feature_album_detail.ui.viewmodel.AlbumDetailsViewModel
 
+const val NAV_ARG_ALBUM_DETAILS_ID = "id"
+
 @OptIn(ExperimentalLifecycleComposeApi::class)
 fun NavGraphBuilder.albumDetailsGraph(
     modifier: Modifier = Modifier
@@ -22,7 +24,7 @@ fun NavGraphBuilder.albumDetailsGraph(
         startDestination = Destinations.AlbumDetails.route,
         route = GlobalDestinations.FeatureAlbumDetails.route,
         arguments = listOf(
-            navArgument(name = "id") {
+            navArgument(name = NAV_ARG_ALBUM_DETAILS_ID) {
                 type = NavType.IntType
                 defaultValue = -1
             }
@@ -31,7 +33,7 @@ fun NavGraphBuilder.albumDetailsGraph(
         composable(
             route = Destinations.AlbumDetails.route,
             arguments = listOf(
-                navArgument(name = "id") {
+                navArgument(name = NAV_ARG_ALBUM_DETAILS_ID) {
                     type = NavType.IntType
                     defaultValue = -1
                 }

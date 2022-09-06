@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.incentro.feature_album_detail.domain.GetLocalAlbumDetailsUseCase
 import com.incentro.feature_album_detail.domain.LoadLatestAlbumDetailsUseCase
+import com.incentro.feature_album_detail.ui.navigation.NAV_ARG_ALBUM_DETAILS_ID
 import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiLoadingState
 import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,8 +23,8 @@ class AlbumDetailsViewModel @Inject constructor(
     loadLatestAlbumDetailsUseCase: LoadLatestAlbumDetailsUseCase,
     dispatcher: CoroutineDispatcher
 ) : ViewModel() {
-    private val albumId: Int = savedStateHandle.get<Int>("id") ?:
-    throw IllegalArgumentException("Missing album ID")
+    private val albumId: Int = savedStateHandle.get<Int>(NAV_ARG_ALBUM_DETAILS_ID) ?:
+    throw IllegalArgumentException(NO_ID_EXCEPTION_MESSAGE)
 
     private val _viewState = MutableStateFlow(AlbumDetailsUiState())
     val viewState = _viewState.asStateFlow()
@@ -48,5 +49,9 @@ class AlbumDetailsViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    companion object {
+        const val NO_ID_EXCEPTION_MESSAGE = "Missing album ID"
     }
 }
