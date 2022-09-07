@@ -49,4 +49,7 @@ dependencies {
     api libraries.composeLifecycleViewModel
     api libraries.coil
 
+    androidTestImplementation testLibraries.composeJUnit
+    debugImplementation testLibraries.composeManifest
+
 }
