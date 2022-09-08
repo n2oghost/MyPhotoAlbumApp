@@ -5,7 +5,6 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
@@ -16,7 +15,7 @@ import com.incentro.feature_album_overview.ui.viewmodel.AlbumOverviewViewModel
 
 @OptIn(ExperimentalLifecycleComposeApi::class)
 fun NavGraphBuilder.albumOverviewGraph(
-    navController: NavController,
+    navigateTo: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     navigation(
@@ -31,7 +30,7 @@ fun NavGraphBuilder.albumOverviewGraph(
             AlbumOverviewScreen(
                 viewState.albums,
                 viewState.loadingState,
-                navController,
+                navigateTo,
                 modifier
             )
         }

@@ -4,14 +4,18 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.incentro.core_ui.composable.LoadingScreen
 import com.incentro.feature_album_detail.data.model.Photo
 import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiLoadingState
+
+const val PHOTO_LIST_TEST_TAG = "photo_list_test_tag"
 
 @Composable
 fun AlbumDetailsScreen(
@@ -54,10 +58,11 @@ fun AlbumDetailsPhotoList(
         verticalArrangement = Arrangement.spacedBy(8.dp),
         contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp),
         modifier = modifier
+            .testTag(PHOTO_LIST_TEST_TAG)
     ) {
-        items(photos.size) { index ->
+        items(photos, key = { it.id }) { photo ->
             AlbumDetailsPhotoItem(
-                item = photos[index]
+                item = photo
             )
         }
     }

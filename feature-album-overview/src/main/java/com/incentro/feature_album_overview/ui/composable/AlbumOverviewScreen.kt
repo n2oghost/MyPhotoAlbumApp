@@ -4,21 +4,24 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.incentro.core_ui.composable.LoadingScreen
 import com.incentro.feature_album_overview.data.model.Album
 import com.incentro.feature_album_overview.ui.state.AlbumOverviewUiLoadingState
+
+const val ALBUM_LIST_TEST_TAG = "album_list_test_tag"
 
 @Composable
 fun AlbumOverviewScreen(
     albums: List<Album>,
     loadingState: AlbumOverviewUiLoadingState,
-    navController: NavController,
+    navigateTo: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val isLoading = loadingState == AlbumOverviewUiLoadingState.Loading
@@ -29,7 +32,7 @@ fun AlbumOverviewScreen(
     ) {
         AlbumOverviewList(
             albums = albums,
-            navController = navController
+            navigateTo = navigateTo
         )
     }
 
@@ -51,18 +54,19 @@ fun AlbumOverviewScreen(
 @Composable
 fun AlbumOverviewList(
     albums: List<Album>,
-    navController: NavController,
+    navigateTo: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(8.dp),
         contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp),
         modifier = modifier
+            .testTag(ALBUM_LIST_TEST_TAG)
     ) {
-        items(albums.size) { index ->
+        items(albums, key = { it.id }) { album ->
             AlbumOverviewItem(
-                item = albums[index],
-                navController = navController,
+                item = album,
+                navigateTo = navigateTo,
             )
         }
     }

@@ -11,13 +11,18 @@ import com.incentro.feature_album_overview.ui.navigation.albumOverviewGraph
 @Composable
 fun NavGraph(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
+    val navigateTo: (String) -> Unit = {
+        navController.navigate(
+            route = it
+        )
+    }
 
     NavHost(
         navController = navController,
         startDestination = GlobalDestinations.FeatureAlbumOverview.route,
         modifier = modifier
     ) {
-        albumOverviewGraph(navController, modifier)
+        albumOverviewGraph(navigateTo, modifier)
         albumDetailsGraph(modifier)
     }
 }
