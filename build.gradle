@@ -5,6 +5,7 @@ buildscript {
     def retrofit_version = "2.9.0"
     def room_version = "2.4.3"
     def lifecycle_version = "2.6.0-alpha01"
+    def compose_navigation_version = "2.5.1"
 
     ext {
         versions = [
@@ -21,7 +22,7 @@ buildscript {
                 composeLifecycleRuntime : "androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version",
                 composeLifecycleViewModel : "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version",
                 composeMaterial : "androidx.compose.material:material:1.2.1",
-                composeNavigation : "androidx.navigation:navigation-compose:2.5.1",
+                composeNavigation : "androidx.navigation:navigation-compose:$compose_navigation_version",
                 composeUiTooling : "androidx.compose.ui:ui-tooling:1.2.1",
                 coreKtx : "androidx.core:core-ktx:1.8.0",
                 coroutines : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version",
@@ -40,6 +41,7 @@ buildscript {
                 extJUnit : "androidx.test.ext:junit:1.1.3",
                 composeJUnit : "androidx.compose.ui:ui-test-junit4:1.2.1",
                 composeManifest : "androidx.compose.ui:ui-test-manifest:1.2.1",
+                composeNavigation : "androidx.navigation:navigation-testing:$compose_navigation_version",
                 coroutines : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version",
                 jUnit : "junit:junit:4.13.2",
                 mockK : "io.mockk:mockk:1.12.4",

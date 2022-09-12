@@ -58,7 +58,8 @@ dependencies {
     implementation project(path: ':feature-album-detail')
     implementation project(path: ':feature-album-overview')
 
-    testImplementation testLibraries.jUnit
-    testImplementation testLibraries.mockK
+    androidTestImplementation testLibraries.composeJUnit
+    androidTestImplementation testLibraries.composeNavigation
+    debugImplementation testLibraries.composeManifest
 
 }
