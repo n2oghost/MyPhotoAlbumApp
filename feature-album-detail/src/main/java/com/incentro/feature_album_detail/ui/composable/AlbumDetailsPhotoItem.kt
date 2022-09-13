@@ -11,9 +11,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.incentro.feature_album_detail.data.model.Photo
+
+const val ALBUM_DETAIL_ITEM_PHOTO_TEST_TAG = "album_detail_item_photo_test_tag"
 
 @Composable
 fun AlbumDetailsPhotoItem(
@@ -28,7 +31,9 @@ fun AlbumDetailsPhotoItem(
             AsyncImage(
                 model = item.url,
                 contentDescription = null,
-                modifier = Modifier.height(400.dp),
+                modifier = Modifier
+                    .height(400.dp)
+                    .testTag(ALBUM_DETAIL_ITEM_PHOTO_TEST_TAG),
                 contentScale = ContentScale.Crop
             )
             Text(

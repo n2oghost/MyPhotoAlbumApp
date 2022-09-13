@@ -16,8 +16,12 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
         }
     }
 
@@ -48,5 +52,8 @@ dependencies {
     api libraries.composeLifecycleRuntime
     api libraries.composeLifecycleViewModel
     api libraries.coil
+
+    androidTestImplementation testLibraries.composeJUnit
+    debugImplementation testLibraries.composeManifest
 
 }

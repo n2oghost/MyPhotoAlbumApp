@@ -8,25 +8,28 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.incentro.core_ui.navigation.GlobalDestinations
 import com.incentro.feature_album_overview.data.model.Album
+
+const val ALBUM_OVERVIEW_ITEM_TEST_TAG = "album_overview_item_test_tag"
 
 @Composable
 fun AlbumOverviewItem(
     item: Album,
-    navController: NavController,
+    navigateTo: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Card(
         modifier = modifier
             .fillMaxWidth()
             .clickable {
-                navController.navigate(
-                    route = GlobalDestinations.FeatureAlbumDetails.withArguments(item.id)
+                navigateTo.invoke(
+                    GlobalDestinations.FeatureAlbumDetails.withArguments(item.id)
                 )
             }
+            .testTag(ALBUM_OVERVIEW_ITEM_TEST_TAG)
     ) {
         Text(
             text = item.title,

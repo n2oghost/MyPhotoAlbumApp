@@ -1,10 +1,10 @@
 package com.incentro.feature_album_detail.ui
 
 import androidx.lifecycle.SavedStateHandle
+import com.incentro.core_ui.navigation.GlobalDestinations.FeatureAlbumDetails.albumIdArg
 import com.incentro.feature_album_detail.data.model.Photo
 import com.incentro.feature_album_detail.domain.GetLocalAlbumDetailsUseCase
 import com.incentro.feature_album_detail.domain.LoadLatestAlbumDetailsUseCase
-import com.incentro.feature_album_detail.ui.navigation.NAV_ARG_ALBUM_DETAILS_ID
 import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiLoadingState
 import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiState
 import com.incentro.feature_album_detail.ui.viewmodel.AlbumDetailsViewModel
@@ -33,7 +33,7 @@ class AlbumDetailsViewModelTests {
 
     @Before
     fun beforeTests() {
-        every { savedStateHandle.get<Int>(NAV_ARG_ALBUM_DETAILS_ID) } returns SAVED_STATE_ID_VALUE
+        every { savedStateHandle.get<Int>(albumIdArg) } returns SAVED_STATE_ID_VALUE
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -48,7 +48,7 @@ class AlbumDetailsViewModelTests {
             dispatcher = testDispatcher
         )
 
-        verify(exactly = 1) { savedStateHandle.get<Int>(NAV_ARG_ALBUM_DETAILS_ID) }
+        verify(exactly = 1) { savedStateHandle.get<Int>(albumIdArg) }
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -56,7 +56,7 @@ class AlbumDetailsViewModelTests {
     fun `no supplied id throws exception`() = runTest {
         val testDispatcher = StandardTestDispatcher(testScheduler)
 
-        every { savedStateHandle.get<Int>(NAV_ARG_ALBUM_DETAILS_ID) } returns null
+        every { savedStateHandle.get<Int>(albumIdArg) } returns null
 
         val result = try {
             AlbumDetailsViewModel(

@@ -18,8 +18,12 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
         }
     }
 
@@ -55,4 +59,6 @@ dependencies {
     testImplementation testLibraries.jUnit
     testImplementation testLibraries.mockK
 
+    androidTestImplementation testLibraries.composeJUnit
+    debugImplementation testLibraries.composeManifest
 }

@@ -3,9 +3,9 @@ package com.incentro.feature_album_detail.ui.viewmodel
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.incentro.core_ui.navigation.GlobalDestinations.FeatureAlbumDetails.albumIdArg
 import com.incentro.feature_album_detail.domain.GetLocalAlbumDetailsUseCase
 import com.incentro.feature_album_detail.domain.LoadLatestAlbumDetailsUseCase
-import com.incentro.feature_album_detail.ui.navigation.NAV_ARG_ALBUM_DETAILS_ID
 import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiLoadingState
 import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,7 +23,7 @@ class AlbumDetailsViewModel @Inject constructor(
     loadLatestAlbumDetailsUseCase: LoadLatestAlbumDetailsUseCase,
     dispatcher: CoroutineDispatcher
 ) : ViewModel() {
-    private val albumId: Int = savedStateHandle.get<Int>(NAV_ARG_ALBUM_DETAILS_ID) ?:
+    private val albumId: Int = savedStateHandle.get<Int>(albumIdArg) ?:
     throw IllegalArgumentException(NO_ID_EXCEPTION_MESSAGE)
 
     private val _viewState = MutableStateFlow(AlbumDetailsUiState())

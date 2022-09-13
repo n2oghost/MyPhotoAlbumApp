@@ -4,25 +4,44 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.incentro.core_ui.composable.LoadingScreen
 import com.incentro.feature_album_detail.data.model.Photo
 import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiLoadingState
+import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiState
+import com.incentro.feature_album_detail.ui.viewmodel.AlbumDetailsViewModel
 
+const val PHOTO_LIST_TEST_TAG = "photo_list_test_tag"
+
+@OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
 fun AlbumDetailsScreen(
-    photos: List<Photo>,
-    loadingState: AlbumDetailsUiLoadingState,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    state: AlbumDetailsUiState = hiltViewModel<AlbumDetailsViewModel>()
+        .viewState
+        .collectAsStateWithLifecycle()
+        .value
 ) {
-    val isLoading = loadingState == AlbumDetailsUiLoadingState.Loading
+    val loadingState by derivedStateOf {
+        state.loadingState
+    }
+    val photos by derivedStateOf {
+        state.photos
+    }
 
     LoadingScreen(
-        isLoading = isLoading,
+        isLoading = loadingState == AlbumDetailsUiLoadingState.Loading,
         modifier = modifier
     ) {
         AlbumDetailsPhotoList(
@@ -36,7 +55,7 @@ fun AlbumDetailsScreen(
             LaunchedEffect(true) {
                 Toast.makeText(
                     context,
-                    loadingState.errorMessage,
+                    (loadingState as AlbumDetailsUiLoadingState.Error).errorMessage,
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -54,10 +73,11 @@ fun AlbumDetailsPhotoList(
         verticalArrangement = Arrangement.spacedBy(8.dp),
         contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp),
         modifier = modifier
+            .testTag(PHOTO_LIST_TEST_TAG)
     ) {
-        items(photos.size) { index ->
+        items(photos, key = { it.id }) { photo ->
             AlbumDetailsPhotoItem(
-                item = photos[index]
+                item = photo
             )
         }
     }

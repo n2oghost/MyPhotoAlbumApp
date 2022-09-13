@@ -11,6 +11,7 @@ import androidx.compose.material.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -30,6 +31,7 @@ fun LoadingScreen(
                     modifier = Modifier
                         .align(Alignment.Center)
                         .size(40.dp)
+                        .testTag("myProgressIndicator")
                 )
             }
             Divider()

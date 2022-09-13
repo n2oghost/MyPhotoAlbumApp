@@ -1,5 +1,5 @@
 package com.incentro.core_ui.navigation
 
-open class Destination(
+interface Destination {
     val route: String
-)
+}

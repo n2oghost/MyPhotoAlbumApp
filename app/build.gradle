@@ -20,8 +20,13 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled = false
+            applicationIdSuffix ".debug"
+            debuggable true
         }
     }
 
@@ -53,7 +58,7 @@ dependencies {
     implementation project(path: ':feature-album-detail')
     implementation project(path: ':feature-album-overview')
 
-    testImplementation testLibraries.jUnit
-    testImplementation testLibraries.mockK
+    androidTestImplementation testLibraries.composeJUnit
+    debugImplementation testLibraries.composeManifest
 
 }
