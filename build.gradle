@@ -5,7 +5,7 @@ buildscript {
     def retrofit_version = "2.9.0"
     def room_version = "2.4.3"
     def lifecycle_version = "2.6.0-alpha01"
-    def compose_navigation_version = "2.5.1"
+    def compose_navigation_version = "2.5.2"
 
     ext {
         versions = [

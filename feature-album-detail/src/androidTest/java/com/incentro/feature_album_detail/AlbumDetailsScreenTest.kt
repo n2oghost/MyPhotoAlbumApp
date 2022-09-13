@@ -12,6 +12,7 @@ import com.incentro.feature_album_detail.ui.composable.AlbumDetailsPhotoList
 import com.incentro.feature_album_detail.ui.composable.AlbumDetailsScreen
 import com.incentro.feature_album_detail.ui.composable.PHOTO_LIST_TEST_TAG
 import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiLoadingState
+import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiState
 import org.junit.Rule
 import org.junit.Test
 
@@ -41,12 +42,14 @@ class AlbumDetailsScreenTest {
 
     @Test
     fun screenShowsList() {
-        val mockData = getPhotosMock()
+        val mockState = AlbumDetailsUiState(
+            photos = getPhotosMock(),
+            loadingState = AlbumDetailsUiLoadingState.Success
+        )
 
         composeTestRule.setContent {
             AlbumDetailsScreen(
-                photos = mockData,
-                loadingState = AlbumDetailsUiLoadingState.Success
+                state = mockState
             )
         }
 

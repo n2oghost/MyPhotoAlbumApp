@@ -10,6 +10,7 @@ import com.incentro.feature_album_overview.ui.composable.ALBUM_LIST_TEST_TAG
 import com.incentro.feature_album_overview.ui.composable.AlbumOverviewList
 import com.incentro.feature_album_overview.ui.composable.AlbumOverviewScreen
 import com.incentro.feature_album_overview.ui.state.AlbumOverviewUiLoadingState
+import com.incentro.feature_album_overview.ui.state.AlbumOverviewUiState
 import org.junit.Rule
 import org.junit.Test
 
@@ -40,12 +41,14 @@ class AlbumOverviewScreenTest {
 
     @Test
     fun screenShowsList() {
-        val mockData = getAlbumsMock()
+        val mockState = AlbumOverviewUiState(
+            albums = getAlbumsMock(),
+            loadingState = AlbumOverviewUiLoadingState.Success
+        )
 
         composeTestRule.setContent {
             AlbumOverviewScreen(
-                albums = mockData,
-                loadingState = AlbumOverviewUiLoadingState.Success,
+                state = mockState,
                 navigateTo = { }
             )
         }
