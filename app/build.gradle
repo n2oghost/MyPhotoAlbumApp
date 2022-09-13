@@ -59,7 +59,6 @@ dependencies {
     implementation project(path: ':feature-album-overview')
 
     androidTestImplementation testLibraries.composeJUnit
-    androidTestImplementation testLibraries.composeNavigation
     debugImplementation testLibraries.composeManifest
 
 }
