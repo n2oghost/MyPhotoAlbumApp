@@ -1,11 +1,12 @@
 plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
-    id 'dagger.hilt.android.plugin'
-    id 'kotlin-kapt'
+    alias libs.plugins.android.library
+    alias libs.plugins.kotlin.android
+    alias libs.plugins.hilt.android
+    alias libs.plugins.ksp
 }
 
 android {
+    namespace "com.incentro.feature_album_overview"
     compileSdk versions.compileSdk
 
     defaultConfig {
@@ -13,7 +14,6 @@ android {
         targetSdk versions.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -23,7 +23,6 @@ android {
         }
         debug {
             minifyEnabled false
-            debuggable true
         }
     }
 
@@ -47,18 +46,18 @@ android {
 
 dependencies {
 
-    implementation libraries.hiltAndroid
-    kapt libraries.hiltCompiler
-    kapt libraries.moshiCodegen
+    implementation libs.hilt.android
+    ksp libs.hilt.compiler
+    ksp libs.moshi.codegen
 
     implementation project(path: ':core')
     implementation project(path: ':core-ui')
     implementation project(path: ':core-db')
 
-    testImplementation testLibraries.coroutines
-    testImplementation testLibraries.jUnit
-    testImplementation testLibraries.mockK
+    testImplementation libs.coroutines
+    testImplementation libs.junit
+    testImplementation libs.mockk
 
-    androidTestImplementation testLibraries.composeJUnit
-    debugImplementation testLibraries.composeManifest
+    androidTestImplementation libs.compose.junit
+    debugImplementation libs.compose.manifest
 }

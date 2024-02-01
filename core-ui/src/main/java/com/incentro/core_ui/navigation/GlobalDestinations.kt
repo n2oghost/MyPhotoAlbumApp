@@ -10,7 +10,7 @@ sealed class GlobalDestinations {
     object FeatureAlbumDetails : Destination {
         override val route = "feature-album-details"
         const val albumIdArg = "id"
-        val routeWithArgs = "${route}/{${albumIdArg}}"
+        val routeWithArgs = "$route/{${albumIdArg}}"
         var arguments = listOf(
             navArgument(name = albumIdArg) {
                 type = NavType.IntType
@@ -18,7 +18,7 @@ sealed class GlobalDestinations {
             }
         )
         fun withArguments(id: Int) : String {
-            return "feature-album-details/$id"
+            return "$route/$id"
         }
     }
 }
