@@ -42,6 +42,13 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion versions.composeCompiler
     }
+
+    packaging {
+        resources.merges.addAll([
+                "META-INF/LICENSE.md",
+                "META-INF/LICENSE-notice.md"
+        ])
+    }
 }
 
 dependencies {
@@ -54,10 +61,11 @@ dependencies {
     implementation project(path: ':core-ui')
     implementation project(path: ':core-db')
 
-    testImplementation libs.coroutines
+    testImplementation libs.coroutines.test
     testImplementation libs.junit
     testImplementation libs.mockk
 
+    androidTestImplementation libs.mockk.android
     androidTestImplementation libs.compose.junit
     debugImplementation libs.compose.manifest
 }

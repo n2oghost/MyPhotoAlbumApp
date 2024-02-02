@@ -1,7 +1,5 @@
 [versions]
 androidGradlePlugin = "8.2.2"
-androidJUnit = "1.1.5"
-composeActivity = "1.8.2"
 composeMaterial = "1.6.0"
 composeNavigation = "2.7.6"
 composeTest = "1.6.0"
@@ -16,13 +14,13 @@ ksp = "1.9.22-1.0.17"
 ktx = "1.12.0"
 lifecycle = "2.7.0"
 mockk = "1.13.9"
+mockkAndroid = "1.13.9"
 moshi = "1.15.1"
 retrofit = "2.9.0"
 room = "2.6.1"
 
 [libraries]
 coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
-compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "composeActivity" }
 compose-hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltComposeNavigation" }
 compose-lifecycle-runtime = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle" }
 compose-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
@@ -42,12 +40,12 @@ room-compiler = { group = "androidx.room", name = "room-compiler", version.ref =
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 
 # Test Libraries
-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidJUnit" }
 compose-junit = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "composeTest" }
 compose-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "composeTest" }
 coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
 junit = { group = "junit", name = "junit", version.ref = "jUnit" }
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+mockk-android = { group = "io.mockk", name = "mockk-android", version.ref = "mockkAndroid" }
 
 
 [plugins]
