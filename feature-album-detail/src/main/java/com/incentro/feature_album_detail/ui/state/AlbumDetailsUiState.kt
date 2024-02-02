@@ -8,7 +8,7 @@ data class AlbumDetailsUiState(
 )
 
 sealed class AlbumDetailsUiLoadingState {
-    object Loading : AlbumDetailsUiLoadingState()
-    object Success : AlbumDetailsUiLoadingState()
+    data object Loading : AlbumDetailsUiLoadingState()
+    data object Success : AlbumDetailsUiLoadingState()
     data class Error(val errorMessage: String?) : AlbumDetailsUiLoadingState()
 }

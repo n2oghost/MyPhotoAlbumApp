@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="deploymentTargetDropDown">
-    <targetSelectedWithDropDown>
-      <Target>
-        <type value="QUICK_BOOT_TARGET" />
-        <deviceKey>
-          <Key>
-            <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="$USER_HOME$/.android/avd/Nexus_6P_API_31.avd" />
-          </Key>
-        </deviceKey>
-      </Target>
-    </targetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2022-06-13T08:04:32.695636Z" />
+    <value>
+      <entry key="Tests in 'com.incentro.core_ui'">
+        <State />
+      </entry>
+      <entry key="Tests in 'com.incentro.feature_album_overview'">
+        <State />
+      </entry>
+      <entry key="Tests in 'com.incentro.myphotoalbum'">
+        <State />
+      </entry>
+      <entry key="app">
+        <State />
+      </entry>
+    </value>
   </component>
 </project>

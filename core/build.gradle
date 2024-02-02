@@ -1,11 +1,12 @@
 plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
-    id 'dagger.hilt.android.plugin'
-    id 'kotlin-kapt'
+    alias libs.plugins.android.library
+    alias libs.plugins.kotlin.android
+    alias libs.plugins.hilt.android
+    alias libs.plugins.ksp
 }
 
 android {
+    namespace "com.incentro.core"
     compileSdk versions.compileSdk
 
     defaultConfig {
@@ -13,7 +14,6 @@ android {
         targetSdk versions.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -23,7 +23,6 @@ android {
         }
         debug {
             minifyEnabled false
-            debuggable true
         }
     }
 
@@ -39,15 +38,15 @@ android {
 
 dependencies {
 
-    api libraries.coreKtx
-    api libraries.retrofit
-    api libraries.moshi
+    api libs.core.ktx
+    api libs.retrofit
+    api libs.moshi
 
-    implementation libraries.retrofitMoshi
-    implementation libraries.coroutines
-    implementation libraries.hiltAndroid
+    implementation libs.retrofit.moshi
+    implementation libs.coroutines
+    implementation libs.hilt.android
 
-    kapt libraries.hiltCompiler
-    kapt libraries.moshiCodegen
+    ksp libs.hilt.compiler
+    ksp libs.moshi.codegen
 
 }

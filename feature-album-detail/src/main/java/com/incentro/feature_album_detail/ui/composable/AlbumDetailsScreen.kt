@@ -9,35 +9,31 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.incentro.core_ui.composable.LoadingScreen
 import com.incentro.feature_album_detail.data.model.Photo
 import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiLoadingState
-import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiState
 import com.incentro.feature_album_detail.ui.viewmodel.AlbumDetailsViewModel
 
 const val PHOTO_LIST_TEST_TAG = "photo_list_test_tag"
 
-@OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
 fun AlbumDetailsScreen(
     modifier: Modifier = Modifier,
-    state: AlbumDetailsUiState = hiltViewModel<AlbumDetailsViewModel>()
-        .viewState
-        .collectAsStateWithLifecycle()
-        .value
+    viewModel: AlbumDetailsViewModel = hiltViewModel()
 ) {
-    val loadingState by derivedStateOf {
-        state.loadingState
+    val state by viewModel.viewState.collectAsStateWithLifecycle()
+    val loadingState by remember {
+        derivedStateOf { state.loadingState }
     }
-    val photos by derivedStateOf {
-        state.photos
+    val photos by remember {
+        derivedStateOf { state.photos }
     }
 
     LoadingScreen(

@@ -9,36 +9,32 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.incentro.core_ui.composable.LoadingScreen
 import com.incentro.feature_album_overview.data.model.Album
 import com.incentro.feature_album_overview.ui.state.AlbumOverviewUiLoadingState
-import com.incentro.feature_album_overview.ui.state.AlbumOverviewUiState
 import com.incentro.feature_album_overview.ui.viewmodel.AlbumOverviewViewModel
 
 const val ALBUM_LIST_TEST_TAG = "album_list_test_tag"
 
-@OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
 fun AlbumOverviewScreen(
     navigateTo: (String) -> Unit,
     modifier: Modifier = Modifier,
-    state: AlbumOverviewUiState = hiltViewModel<AlbumOverviewViewModel>()
-        .viewState
-        .collectAsStateWithLifecycle()
-        .value
+    viewModel: AlbumOverviewViewModel = hiltViewModel()
 ) {
-    val albums by derivedStateOf {
-        state.albums
+    val state by viewModel.viewState.collectAsStateWithLifecycle()
+    val albums by remember {
+        derivedStateOf { state.albums }
     }
-    val loadingState by derivedStateOf {
-        state.loadingState
+    val loadingState by remember {
+        derivedStateOf { state.loadingState }
     }
 
     LoadingScreen(

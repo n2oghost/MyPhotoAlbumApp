@@ -1,11 +1,12 @@
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'dagger.hilt.android.plugin'
-    id 'kotlin-kapt'
+    alias libs.plugins.android.application
+    alias libs.plugins.kotlin.android
+    alias libs.plugins.hilt.android
+    alias libs.plugins.ksp
 }
 
 android {
+    namespace "com.incentro.myphotoalbum"
     compileSdk versions.compileSdk
 
     defaultConfig {
@@ -50,15 +51,15 @@ android {
 
 dependencies {
 
-    implementation libraries.hiltAndroid
-    kapt libraries.hiltCompiler
+    implementation libs.hilt.android
+    ksp libs.hilt.compiler
 
     implementation project(path: ':core')
     implementation project(path: ':core-ui')
     implementation project(path: ':feature-album-detail')
     implementation project(path: ':feature-album-overview')
 
-    androidTestImplementation testLibraries.composeJUnit
-    debugImplementation testLibraries.composeManifest
+    androidTestImplementation libs.compose.junit
+    debugImplementation libs.compose.manifest
 
 }

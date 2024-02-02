@@ -1,9 +1,10 @@
 plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
+    alias libs.plugins.android.library
+    alias libs.plugins.kotlin.android
 }
 
 android {
+    namespace "com.incentro.core_ui"
     compileSdk versions.compileSdk
 
     defaultConfig {
@@ -11,7 +12,6 @@ android {
         targetSdk versions.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -21,7 +21,6 @@ android {
         }
         debug {
             minifyEnabled false
-            debuggable true
         }
     }
 
@@ -45,15 +44,15 @@ android {
 
 dependencies {
 
-    api libraries.composeNavigation
-    api libraries.composeHiltNavigation
-    api libraries.composeMaterial
-    api libraries.composeUiTooling
-    api libraries.composeLifecycleRuntime
-    api libraries.composeLifecycleViewModel
-    api libraries.coil
+    api libs.compose.navigation
+    api libs.compose.hilt.navigation
+    api libs.compose.material
+    api libs.compose.ui.tooling
+    api libs.compose.lifecycle.runtime
+    api libs.compose.lifecycle.viewmodel
+    api libs.coil
 
-    androidTestImplementation testLibraries.composeJUnit
-    debugImplementation testLibraries.composeManifest
+    androidTestImplementation libs.compose.junit
+    debugImplementation libs.compose.manifest
 
 }

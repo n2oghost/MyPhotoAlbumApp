@@ -1,10 +1,11 @@
 plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
+    alias libs.plugins.android.library
+    alias libs.plugins.kotlin.android
+    alias libs.plugins.ksp
 }
 
 android {
+    namespace "com.example.core_db"
     compileSdk versions.compileSdk
 
     defaultConfig {
@@ -12,7 +13,6 @@ android {
         targetSdk versions.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -22,7 +22,6 @@ android {
         }
         debug {
             minifyEnabled false
-            debuggable true
         }
     }
 
@@ -38,8 +37,8 @@ android {
 
 dependencies {
 
-    implementation libraries.roomRuntime
-    api libraries.roomKtx
-    kapt libraries.roomCompiler
+    implementation libs.room.runtime
+    api libs.room.ktx
+    ksp libs.room.compiler
 
 }

@@ -11,6 +11,9 @@ import com.incentro.feature_album_overview.ui.composable.AlbumOverviewList
 import com.incentro.feature_album_overview.ui.composable.AlbumOverviewScreen
 import com.incentro.feature_album_overview.ui.state.AlbumOverviewUiLoadingState
 import com.incentro.feature_album_overview.ui.state.AlbumOverviewUiState
+import com.incentro.feature_album_overview.ui.viewmodel.AlbumOverviewViewModel
+import io.mockk.every
+import io.mockk.mockk
 import org.junit.Rule
 import org.junit.Test
 
@@ -45,10 +48,12 @@ class AlbumOverviewScreenTest {
             albums = getAlbumsMock(),
             loadingState = AlbumOverviewUiLoadingState.Success
         )
+        val mockViewModel = mockk<AlbumOverviewViewModel>(relaxed = true)
+        every { mockViewModel.viewState.value } returns mockState
 
         composeTestRule.setContent {
             AlbumOverviewScreen(
-                state = mockState,
+                viewModel = mockViewModel,
                 navigateTo = { }
             )
         }
