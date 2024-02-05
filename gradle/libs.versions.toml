@@ -10,6 +10,7 @@ hilt = "2.50"
 hiltComposeNavigation = "1.1.0"
 jUnit = "4.13.2"
 kotlinAndroid = "1.9.22"
+koin = "3.5.3"
 ksp = "1.9.22-1.0.17"
 ktx = "1.12.0"
 lifecycle = "2.7.0"
@@ -31,6 +32,9 @@ core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
 coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+koin = { group = "io.insert-koin", name = "koin-android", version.ref = "koin"}
+koin-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin"}
+koin-navigation = { group = "io.insert-koin", name = "koin-androidx-navigation", version.ref = "koin"}
 moshi = { group = "com.squareup.moshi", name = "moshi", version.ref = "moshi" }
 moshi-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "moshi" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }

@@ -41,6 +41,7 @@ dependencies {
     api libs.core.ktx
     api libs.retrofit
     api libs.moshi
+    api libs.koin
 
     implementation libs.retrofit.moshi
     implementation libs.coroutines

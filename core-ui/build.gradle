@@ -51,6 +51,7 @@ dependencies {
     api libs.compose.lifecycle.runtime
     api libs.compose.lifecycle.viewmodel
     api libs.coil
+    api libs.koin.compose
 
     androidTestImplementation libs.compose.junit
     debugImplementation libs.compose.manifest
