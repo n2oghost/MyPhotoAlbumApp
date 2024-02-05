@@ -4,6 +4,7 @@ buildscript {
                 compileSdk : 34,
                 minSdk : 21,
                 targetSdk : 34,
+                java : 17,
                 composeCompiler : "1.5.8"
         ]
     }
