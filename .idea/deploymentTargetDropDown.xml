@@ -2,7 +2,7 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="Tests in 'com.incentro.core_ui'">
+      <entry key="Tests in 'com.incentro.feature_album_detail'">
         <State />
       </entry>
       <entry key="Tests in 'com.incentro.feature_album_overview'">

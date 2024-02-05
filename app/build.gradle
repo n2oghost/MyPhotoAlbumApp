@@ -50,7 +50,8 @@ android {
 
 dependencies {
 
-    implementation project(path: ':core')
+    implementation libs.koin
+
     implementation project(path: ':core-ui')
     implementation project(path: ':feature-album-detail')
     implementation project(path: ':feature-album-overview')

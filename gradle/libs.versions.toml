@@ -6,7 +6,6 @@ composeTest = "1.6.0"
 composeUiTooling = "1.6.0"
 coroutines = "1.7.3"
 coil = "2.5.0"
-hiltComposeNavigation = "1.1.0"
 jUnit = "4.13.2"
 kotlinAndroid = "1.9.22"
 koin = "3.5.3"
@@ -21,7 +20,6 @@ room = "2.6.1"
 
 [libraries]
 coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
-compose-hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltComposeNavigation" }
 compose-lifecycle-runtime = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle" }
 compose-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 compose-material = { group = "androidx.compose.material", name = "material", version.ref = "composeMaterial" }
@@ -31,7 +29,6 @@ core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
 coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 koin = { group = "io.insert-koin", name = "koin-android", version.ref = "koin"}
 koin-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin"}
-koin-navigation = { group = "io.insert-koin", name = "koin-androidx-navigation", version.ref = "koin"}
 moshi = { group = "com.squareup.moshi", name = "moshi", version.ref = "moshi" }
 moshi-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "moshi" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
