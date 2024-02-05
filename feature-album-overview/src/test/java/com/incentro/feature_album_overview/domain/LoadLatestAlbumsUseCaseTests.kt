@@ -1,6 +1,6 @@
 package com.incentro.feature_album_overview.domain
 
-import com.incentro.feature_album_overview.data.repository.AlbumsRepository
+import com.incentro.feature_album_overview.data.repository.AlbumOverviewRepository
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -9,7 +9,7 @@ import org.junit.Test
 
 class LoadLatestAlbumsUseCaseTests {
 
-    private val repository = mockk<AlbumsRepository>(relaxed = true)
+    private val repository = mockk<AlbumOverviewRepository>(relaxed = true)
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test

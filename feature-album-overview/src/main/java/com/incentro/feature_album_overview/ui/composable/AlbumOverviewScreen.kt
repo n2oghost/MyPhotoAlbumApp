@@ -14,12 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.incentro.core_ui.composable.LoadingScreen
 import com.incentro.feature_album_overview.data.model.Album
 import com.incentro.feature_album_overview.ui.state.AlbumOverviewUiLoadingState
 import com.incentro.feature_album_overview.ui.viewmodel.AlbumOverviewViewModel
+import org.koin.androidx.compose.koinViewModel
 
 const val ALBUM_LIST_TEST_TAG = "album_list_test_tag"
 
@@ -27,7 +27,7 @@ const val ALBUM_LIST_TEST_TAG = "album_list_test_tag"
 fun AlbumOverviewScreen(
     navigateTo: (String) -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: AlbumOverviewViewModel = hiltViewModel()
+    viewModel: AlbumOverviewViewModel = koinViewModel()
 ) {
     val state by viewModel.viewState.collectAsStateWithLifecycle()
     val albums by remember {

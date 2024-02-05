@@ -14,19 +14,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.incentro.core_ui.composable.LoadingScreen
 import com.incentro.feature_album_detail.data.model.Photo
 import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiLoadingState
 import com.incentro.feature_album_detail.ui.viewmodel.AlbumDetailsViewModel
+import org.koin.androidx.compose.koinViewModel
 
 const val PHOTO_LIST_TEST_TAG = "photo_list_test_tag"
 
 @Composable
 fun AlbumDetailsScreen(
     modifier: Modifier = Modifier,
-    viewModel: AlbumDetailsViewModel = hiltViewModel()
+    viewModel: AlbumDetailsViewModel = koinViewModel()
 ) {
     val state by viewModel.viewState.collectAsStateWithLifecycle()
     val loadingState by remember {

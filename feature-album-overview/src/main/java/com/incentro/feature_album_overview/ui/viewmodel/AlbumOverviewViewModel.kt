@@ -6,16 +6,13 @@ import com.incentro.feature_album_overview.domain.GetLocalAlbumsUseCase
 import com.incentro.feature_album_overview.domain.LoadLatestAlbumsUseCase
 import com.incentro.feature_album_overview.ui.state.AlbumOverviewUiLoadingState
 import com.incentro.feature_album_overview.ui.state.AlbumOverviewUiState
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-@HiltViewModel
-class AlbumOverviewViewModel @Inject constructor(
+class AlbumOverviewViewModel(
     loadLatestAlbumsUseCase: LoadLatestAlbumsUseCase,
     getLocalAlbumsUseCase: GetLocalAlbumsUseCase,
     dispatcher: CoroutineDispatcher

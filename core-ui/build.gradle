@@ -45,12 +45,12 @@ android {
 dependencies {
 
     api libs.compose.navigation
-    api libs.compose.hilt.navigation
     api libs.compose.material
     api libs.compose.ui.tooling
     api libs.compose.lifecycle.runtime
     api libs.compose.lifecycle.viewmodel
     api libs.coil
+    api libs.koin.compose
 
     androidTestImplementation libs.compose.junit
     debugImplementation libs.compose.manifest

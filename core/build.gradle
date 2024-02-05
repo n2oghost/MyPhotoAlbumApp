@@ -1,7 +1,6 @@
 plugins {
     alias libs.plugins.android.library
     alias libs.plugins.kotlin.android
-    alias libs.plugins.hilt.android
     alias libs.plugins.ksp
 }
 
@@ -41,12 +40,11 @@ dependencies {
     api libs.core.ktx
     api libs.retrofit
     api libs.moshi
+    api libs.koin
 
     implementation libs.retrofit.moshi
     implementation libs.coroutines
-    implementation libs.hilt.android
 
-    ksp libs.hilt.compiler
     ksp libs.moshi.codegen
 
 }

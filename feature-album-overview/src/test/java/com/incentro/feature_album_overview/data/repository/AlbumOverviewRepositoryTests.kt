@@ -3,7 +3,7 @@ package com.incentro.feature_album_overview.data.repository
 import com.incentro.core_db.dao.AlbumDao
 import com.incentro.core_db.model.AlbumDatabaseModel
 import com.incentro.feature_album_overview.data.model.network.AlbumNetworkModel
-import com.incentro.feature_album_overview.data.service.AlbumsService
+import com.incentro.feature_album_overview.data.service.AlbumOverviewService
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
@@ -18,9 +18,9 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 
-class AlbumsRepositoryTests {
+class AlbumOverviewRepositoryTests {
 
-    private val service = mockk<AlbumsService>(relaxed = true)
+    private val service = mockk<AlbumOverviewService>(relaxed = true)
     private val albumDao = mockk<AlbumDao>(relaxed = true)
 
     @Before
@@ -34,7 +34,7 @@ class AlbumsRepositoryTests {
     fun `fetchLatestAlbums() calls service and saves data`() = runTest {
         val testDispatcher = StandardTestDispatcher(testScheduler)
 
-        val repository = AlbumsRepository(service, albumDao, testDispatcher)
+        val repository = AlbumOverviewRepository(service, albumDao, testDispatcher)
 
         repository.fetchLatestAlbums()
 
@@ -47,7 +47,7 @@ class AlbumsRepositoryTests {
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun `val albums gets and maps local data`() = runTest {
-        val repository = AlbumsRepository(service, albumDao)
+        val repository = AlbumOverviewRepository(service, albumDao)
 
         val result = repository.albums.first()
 
