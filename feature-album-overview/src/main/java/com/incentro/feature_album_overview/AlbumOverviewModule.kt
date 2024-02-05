@@ -1,26 +1,27 @@
 package com.incentro.feature_album_overview
 
-import android.content.Context
-import com.incentro.core_db.AlbumDatabase
-import com.incentro.core_db.dao.AlbumDao
-import com.incentro.feature_album_overview.data.service.AlbumsService
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import com.incentro.core.network.networkModule
+import com.incentro.core_db.dataBaseModule
+import com.incentro.feature_album_overview.data.repository.AlbumOverviewRepository
+import com.incentro.feature_album_overview.data.service.AlbumOverviewService
+import com.incentro.feature_album_overview.domain.GetLocalAlbumsUseCase
+import com.incentro.feature_album_overview.domain.LoadLatestAlbumsUseCase
+import com.incentro.feature_album_overview.ui.viewmodel.AlbumOverviewViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.dsl.module
 import retrofit2.Retrofit
 
-@Module
-@InstallIn(SingletonComponent::class)
-object AlbumOverviewModule {
+val albumOverviewModule = module {
 
-    @Singleton
-    @Provides
-    fun provideAlbumDetailsService(retrofit: Retrofit): AlbumsService =
-        retrofit.create(AlbumsService::class.java)
+    includes(networkModule, dataBaseModule)
 
-    @Provides
-    fun provideAlbumDao(@ApplicationContext appContext: Context) : AlbumDao = AlbumDatabase.Companion.getDatabase(appContext).albumDao()
+    factory { provideAlbumOverviewService(get()) }
+    factory { AlbumOverviewRepository(get(), get(), get()) }
+    factory { GetLocalAlbumsUseCase(get()) }
+    factory { LoadLatestAlbumsUseCase(get()) }
+
+    viewModel { AlbumOverviewViewModel(get(), get(), get()) }
 }
+
+private fun provideAlbumOverviewService(retrofit: Retrofit) : AlbumOverviewService =
+    retrofit.create(AlbumOverviewService::class.java)

@@ -1,7 +1,7 @@
 package com.incentro.feature_album_overview.domain
 
 import com.incentro.feature_album_overview.data.model.Album
-import com.incentro.feature_album_overview.data.repository.AlbumsRepository
+import com.incentro.feature_album_overview.data.repository.AlbumOverviewRepository
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -15,7 +15,7 @@ import org.junit.Test
 
 class GetLocalAlbumsUseCaseTests {
 
-    private val repository = mockk<AlbumsRepository>(relaxed = true)
+    private val repository = mockk<AlbumOverviewRepository>(relaxed = true)
 
     @Before
     fun beforeTest() {

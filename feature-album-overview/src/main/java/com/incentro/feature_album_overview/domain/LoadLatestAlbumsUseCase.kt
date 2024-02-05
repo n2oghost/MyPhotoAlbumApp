@@ -1,12 +1,11 @@
 package com.incentro.feature_album_overview.domain
 
-import com.incentro.feature_album_overview.data.repository.AlbumsRepository
-import javax.inject.Inject
+import com.incentro.feature_album_overview.data.repository.AlbumOverviewRepository
 
-class LoadLatestAlbumsUseCase @Inject constructor(
-    private val albumsRepository: AlbumsRepository
+class LoadLatestAlbumsUseCase(
+    private val albumOverviewRepository: AlbumOverviewRepository
 ) {
     suspend operator fun invoke() {
-        albumsRepository.fetchLatestAlbums()
+        albumOverviewRepository.fetchLatestAlbums()
     }
 }
