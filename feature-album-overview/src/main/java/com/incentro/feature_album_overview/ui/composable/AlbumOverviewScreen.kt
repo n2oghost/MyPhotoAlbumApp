@@ -14,7 +14,6 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -27,7 +26,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.incentro.core_ui.composable.LoadingIndicator
 import com.incentro.feature_album_overview.R
 import com.incentro.feature_album_overview.data.model.Album
-import com.incentro.feature_album_overview.ui.state.AlbumOverviewUiLoadingState
 import com.incentro.feature_album_overview.ui.viewmodel.AlbumOverviewViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -41,9 +39,6 @@ fun AlbumOverviewScreen(
     val state by viewModel.viewState.collectAsStateWithLifecycle()
     val albums by remember {
         derivedStateOf { state.albums }
-    }
-    val loadingState by remember {
-        derivedStateOf { state.loadingState }
     }
 
     Scaffold(
@@ -63,9 +58,9 @@ fun AlbumOverviewScreen(
                 .padding(padding)
                 .fillMaxHeight()
         ) {
-            LoadingIndicator(
-                isLoading = loadingState == AlbumOverviewUiLoadingState.Loading
-            )
+            if (state.loading) {
+                LoadingIndicator()
+            }
             Divider()
             AlbumOverviewList(
                 albums = albums,
@@ -74,18 +69,12 @@ fun AlbumOverviewScreen(
         }
     }
 
-    when(loadingState) {
-        is AlbumOverviewUiLoadingState.Error -> {
-            val context = LocalContext.current
-            LaunchedEffect(true) {
-                Toast.makeText(
-                    context,
-                    (loadingState as AlbumOverviewUiLoadingState.Error).errorMessage,
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
-        else -> {}
+    state.userMessage?.let {
+        Toast.makeText(
+            LocalContext.current,
+            it,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
 

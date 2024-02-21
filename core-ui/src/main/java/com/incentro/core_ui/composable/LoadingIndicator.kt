@@ -14,22 +14,19 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun LoadingIndicator(
-    isLoading: Boolean,
     modifier: Modifier = Modifier
 ) {
-    if (isLoading) {
-        Box(
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(vertical = 12.dp)
-                .height(50.dp)
-        ) {
-            CircularProgressIndicator(
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .size(40.dp)
-                    .testTag("myProgressIndicator")
-            )
-        }
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(vertical = 12.dp)
+            .height(50.dp)
+    ) {
+        CircularProgressIndicator(
+            modifier = Modifier
+                .align(Alignment.Center)
+                .size(40.dp)
+                .testTag("myProgressIndicator")
+        )
     }
 }

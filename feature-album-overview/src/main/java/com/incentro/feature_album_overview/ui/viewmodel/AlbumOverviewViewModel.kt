@@ -2,9 +2,9 @@ package com.incentro.feature_album_overview.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.incentro.feature_album_overview.R
 import com.incentro.feature_album_overview.domain.GetLocalAlbumsUseCase
 import com.incentro.feature_album_overview.domain.LoadLatestAlbumsUseCase
-import com.incentro.feature_album_overview.ui.state.AlbumOverviewUiLoadingState
 import com.incentro.feature_album_overview.ui.state.AlbumOverviewUiState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,6 +22,9 @@ class AlbumOverviewViewModel(
     val viewState = _viewState.asStateFlow()
 
     init {
+        _viewState.update {
+            it.copy(loading = true)
+        }
         viewModelScope.launch(dispatcher) {
             getLocalAlbumsUseCase().collect { albums ->
                 _viewState.update {
@@ -33,13 +36,22 @@ class AlbumOverviewViewModel(
             try {
                 loadLatestAlbumsUseCase()
                 _viewState.update {
-                    it.copy(loadingState = AlbumOverviewUiLoadingState.Success)
+                    it.copy(loading = false)
                 }
             } catch (error: Exception) {
                 _viewState.update {
-                    it.copy(loadingState = AlbumOverviewUiLoadingState.Error(error.message))
+                    it.copy(
+                        loading = false,
+                        userMessage = R.string.album_overview_loading_error
+                    )
                 }
             }
+        }
+    }
+
+    fun userMessageShown() {
+        _viewState.update {
+            it.copy(userMessage = null)
         }
     }
 }

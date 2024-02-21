@@ -14,7 +14,6 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -27,7 +26,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.incentro.core_ui.composable.LoadingIndicator
 import com.incentro.feature_album_detail.R
 import com.incentro.feature_album_detail.data.model.Photo
-import com.incentro.feature_album_detail.ui.state.AlbumDetailsUiLoadingState
 import com.incentro.feature_album_detail.ui.viewmodel.AlbumDetailsViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -38,9 +36,6 @@ fun AlbumDetailsScreen(
     viewModel: AlbumDetailsViewModel = koinViewModel()
 ) {
     val state by viewModel.viewState.collectAsStateWithLifecycle()
-    val loadingState by remember {
-        derivedStateOf { state.loadingState }
-    }
     val photos by remember {
         derivedStateOf { state.photos }
     }
@@ -62,9 +57,9 @@ fun AlbumDetailsScreen(
                 .padding(padding)
                 .fillMaxHeight()
         ) {
-            LoadingIndicator(
-                isLoading = loadingState == AlbumDetailsUiLoadingState.Loading
-            )
+            if (state.loading) {
+                LoadingIndicator()
+            }
             Divider()
             AlbumDetailsPhotoList(
                 photos = photos
@@ -72,18 +67,12 @@ fun AlbumDetailsScreen(
         }
     }
 
-    when(loadingState) {
-        is AlbumDetailsUiLoadingState.Error -> {
-            val context = LocalContext.current
-            LaunchedEffect(true) {
-                Toast.makeText(
-                    context,
-                    (loadingState as AlbumDetailsUiLoadingState.Error).errorMessage,
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
-        else -> {  }
+    state.userMessage?.let {
+        Toast.makeText(
+            LocalContext.current,
+            it,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
 
