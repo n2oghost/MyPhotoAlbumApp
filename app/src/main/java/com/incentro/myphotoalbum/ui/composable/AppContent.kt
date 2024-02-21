@@ -2,12 +2,12 @@ package com.incentro.myphotoalbum.ui.composable
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
-import com.incentro.core_ui.theme.ComposeAppTheme
+import com.incentro.core_ui.theme.MyPhotoAlbumTheme
 import com.incentro.myphotoalbum.ui.navigation.MyPhotoAlbumNavHost
 
 @Composable
 fun AppContent() {
-    ComposeAppTheme {
+    MyPhotoAlbumTheme {
         val navController = rememberNavController()
         val navigateTo: (String) -> Unit = {
             navController.navigate(

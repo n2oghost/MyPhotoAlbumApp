@@ -11,32 +11,8 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-private val LightColorScheme = lightColors(
-    primary = Purple40,
-    primaryVariant = Pink40,
-    secondary = PurpleGrey40,
-    background = OffWhite,
-    surface = White980,
-    onPrimary = White,
-    onSecondary = White,
-    onBackground = OffBlack,
-    onSurface = OffBlack,
-)
-
-private val DarkColorScheme = darkColors(
-    primary = Purple80,
-    primaryVariant = Pink80,
-    secondary = PurpleGrey80,
-    background = Grey900,
-    surface = White150,
-    onPrimary = Grey900,
-    onSecondary = Grey900,
-    onBackground = OffWhite,
-    onSurface = White980,
-)
-
 @Composable
-fun ComposeAppTheme(
+fun MyPhotoAlbumTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
