@@ -17,6 +17,7 @@ mockkAndroid = "1.13.9"
 moshi = "1.15.1"
 retrofit = "2.9.0"
 room = "2.6.1"
+splash = "1.0.1"
 
 [libraries]
 coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
@@ -26,6 +27,7 @@ compose-material = { group = "androidx.compose.material", name = "material", ver
 compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "composeNavigation" }
 compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "composeUiTooling" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
+core-splash = { group = "androidx.core", name = "core-splashscreen", version.ref = "splash" }
 coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 koin = { group = "io.insert-koin", name = "koin-android", version.ref = "koin"}
 koin-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin"}

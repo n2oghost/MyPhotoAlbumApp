@@ -46,6 +46,7 @@ android {
 dependencies {
 
     implementation libs.koin
+    implementation libs.core.splash
 
     implementation project(path: ':core-ui')
     implementation project(path: ':feature-album-detail')
